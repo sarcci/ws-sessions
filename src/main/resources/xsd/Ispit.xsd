@@ -1,0 +1,103 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+           <xs:include schemaLocation="Ispit.xsd"/>
+
+
+	<xs:complexType name="Ispit">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" />
+			<xs:element name="kol" type="xs:int" />
+			<xs:element name="isp" type="xs:int" />
+            <xs:element name="predmet" type="xs:string" />
+            <xs:element name="datum" type="xs:string" />
+            <xs:element name="vreme" type="xs:string" />
+            <xs:element name="prostorija" type="xs:string" />
+            <xs:element name="stgod" type="xs:string" />
+			<xs:element name="sem" type = "xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="serviceStatusIspit">
+		<xs:sequence>
+			<xs:element name="status" type="xs:string" />
+			<xs:element name="message" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="addIspitRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Ispit" type="tns:Ispit" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addIspitResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="serviceStatusIspit" type="tns:serviceStatusIspit" />
+				<xs:element name="Ispit" type="tns:Ispit" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getIspitByIdRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="getIspitResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Ispit" type="tns:Ispit" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+    <xs:element name="getIspitsByKolRequest">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="kol" type="xs:int" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="getIspitsResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="Ispit" type="tns:Ispit" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+
+	<xs:element name="updateIspitRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Ispit" type="tns:Ispit" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="updateIspitResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="serviceStatusIspit" type="tns:serviceStatusIspit" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="deleteIspitRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="deleteIspitResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="serviceStatusIspit" type="tns:serviceStatusIspit" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema> 

@@ -1,0 +1,99 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+           <xs:include schemaLocation="Kol.xsd"/>
+
+
+	<xs:complexType name="Kol">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" />
+			<xs:element name="studiska" type="xs:string" />
+			<xs:element name="sem" type="xs:string" />
+			<xs:element name = "red" type = "xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="serviceStatusKol">
+		<xs:sequence>
+			<xs:element name="status" type="xs:string" />
+			<xs:element name="message" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="addKolRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Kol" type="tns:Kol" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addKolResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="serviceStatusKol" type="tns:serviceStatusKol" />
+				<xs:element name="Kol" type="tns:Kol" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+    <xs:element name="getAllKolRequest">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllKolResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Kol" type="tns:Kol" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+	<xs:element name="getKolByIdRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="getKolResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Kol" type="tns:Kol" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateKolRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" /> 
+				<xs:element name="sem" type="xs:string" />
+				<xs:element name="red" type="xs:string" />
+				<xs:element name="studiska" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="updateKolResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="serviceStatusKol" type="tns:serviceStatusKol" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="deleteKolRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="deleteKolResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="serviceStatusKol" type="tns:serviceStatusKol" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema> 
